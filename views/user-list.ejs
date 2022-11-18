@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>user list</title>
+</head>
+
+<body>
+    <h1>User list</h1>
+    <ul id="users-list"> 
+    
+    
+    </ul>
+    <script>
+        const usersList=document.querySelector('#users-list')
+        fetch('/users')
+            .then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                console.log(data)
+                const users = data.students;
+                const listHtml = users.map((user)=>`<li>${user.name}</li>`).join('');
+                usersList.innerHTML= listHtml;
+                
+            })
+    </script>
+</body>
+
+</html>
